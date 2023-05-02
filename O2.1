@@ -1,0 +1,80 @@
+#include<iostream>
+
+using namespace std;
+
+void Nhap(int a[100][100], int& n, int& m)
+{
+	cout << "Nhap n: "; cin >> n;
+	cout << "Nhap m: "; cin >> m;
+
+	do
+	{
+		cout << "Nhap diem so: " << endl;
+		for (int i = 0; i < n; i++)
+		{
+			for (int j = 0; j < m; j++)
+			{
+				cout << "a["<<i<<"]["<<j<<"]= ";
+				cin >> a[i][j];
+			}
+		}
+	} while (a < 0);
+}
+
+void BatBai(int a[100][100], int n, int m)
+{
+	int bat_bai = 1;
+	for (int i = 0; i < n; i++)
+	{
+		for (int j = 0; j < m; j++)
+		{
+			if (a[i][j] == 0)
+			{
+				bat_bai = 0;
+				break;
+			}
+		}
+		if (bat_bai)
+		{
+			cout << "Doi bong " << i + 1 <<" chua thua tran nao." << endl;
+		}
+	}
+}
+
+void DiemCaoNhat(int a[100][100], int n, int m)
+{
+	int DiemCaoNhat = 0;
+	for (int i = 0; i < n; i++)
+	{
+		int TongDiem = 0;
+		for (int j = 0; j < m; j++)
+		{
+			TongDiem += a[i][j];
+		}
+		if (TongDiem > DiemCaoNhat) DiemCaoNhat = TongDiem;
+	}
+	
+	cout << "Doi bong co diem cao nhat la: ";
+	for (int i = 0; i < n; i++)
+	{
+		int TongDiem = 0;
+		for (int j = 0; j < m; j++)
+		{
+			TongDiem += a[i][j];
+		}
+		if (TongDiem == DiemCaoNhat)
+		{
+			cout << i + 1 << " ";
+		}
+	}
+}
+
+int main()
+{
+	int a[100][100], n, m;
+	Nhap(a, n, m);
+	BatBai(a, n, m);
+	DiemCaoNhat(a, n, m);
+
+	return 0;
+}

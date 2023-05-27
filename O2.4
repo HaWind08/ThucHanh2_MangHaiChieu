@@ -1,0 +1,54 @@
+#include<iostream>
+using namespace std;
+
+const int MAXA = 256;
+
+void Nhap(int a[MAXA][MAXA], int &n, int &m)
+{
+	cout << "Nhap n: "; cin >> n;
+	cout << "Nhap m: "; cin >> m;
+
+	cout << "Nhap ma tran a: " << endl;
+	for (int i = 0; i < n; i++)
+	{
+		for (int j = 0; j < m; j++)
+		{
+			cout << "a[" << i << "][" << j << "]= ";
+			cin >> a[i][j];
+		}
+	}
+}
+
+void TinhToan(int a[MAXA][MAXA], int n, int m)
+{
+
+	for (int i = 1; i < n - 1; i++)
+	{
+		for (int j = 1; j < m - 1; j++)
+		{
+			a[i][j] = (a[i - 1][j] + a[i + 1][j] + a[i][j - 1] + a[i][j + 1]) / 4;
+		}
+	}
+
+	cout << "Ma tran sau khi lam phang: " << endl;
+	for (int i = 0; i < n; i++)
+	{
+		for (int j = 0; j < m; j++)
+		{
+			cout << a[i][j] << " ";
+		}
+		cout << endl;
+	}
+
+}
+
+int main()
+{
+	int a[MAXA][MAXA], n, m;
+	Nhap(a, n, m);
+
+	TinhToan(a, n, m);
+
+	return 0;
+
+}
